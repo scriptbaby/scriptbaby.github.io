@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>posts</title>
+    <title>writeups</title>
     <link>https://scriptbaby.github.io/</link>
-    <description>Recent content on posts</description>
+    <description>Recent content on writeups</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Sun, 30 Dec 2018 21:35:54 +0800</lastBuildDate>
