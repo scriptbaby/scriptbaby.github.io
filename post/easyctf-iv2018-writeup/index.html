@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en-us" dir="ltr">
+  <head>
+  <meta charset="utf-8" />
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <title>EasyCTF IV(2018) Writeup &middot; posts</title>
+  <meta name="description" content="Writeup by ScriptBaby" />
+  
+  <link rel="icon" type="image/x-icon" href="/img/favicon.ico">
+  
+  <link rel="icon" type="image/png" href="/img/favicon.png">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.0/normalize.min.css" />
+  <link rel="stylesheet" href="/css/style.css" />
+  <link rel="stylesheet" href="/css/xcode.css" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.10.0/dist/katex.min.css" integrity="sha384-9eLZqc9ds8eNjO3TmqPeYcDj8n+Qfa4nuSiGYa6DjLNcv9BtN69ZIulL9+8CqC9Y" crossorigin="anonymous">
+  <link rel="stylesheet" href="/css/latolatinfonts.css" />
+  
+</head>
+  <body class="single-body">
+    <nav class="nav-bar side-padding">
+  <h1 class="nav-header"><a href="/" class="nav-text">
+    ScriptBaby
+  </a></h1>
+  <div class="hamburger-menu">
+		<input type="checkbox" onclick="hamburgerMenuPressed()"/>
+		<span></span>
+		<span></span>
+    <ul class="hamburger-menu-overlay">
+      <li><a href="/" class="hamburger-menu-overlay-link">Home</a></li>
+      
+			<li><a href="http://localhost:1313/about/" class="hamburger-menu-overlay-link">About Us</a></li>
+			
+      
+    </ul>
+  </div>
+</nav>
+    <main class="content side-text-padding">
+      <article class="post dropcase">
+        <header class="post-header">
+        	<h1 class="post-title">EasyCTF IV(2018) Writeup</h1>
+          <p class="post-date">Posted <time datetime="2018-12-30">Dec 30, 2018</time></p>
+        </header>
+        
+        <figure class="post-figure">
+          <img src="/img/EasyCTF_IV/easyctf4.png">
+        </figure>
+        
+        
+
+<p>Here are the Writeups for the challenges my team and I solved.
+The writeups will start from challenges with 30 points and up.</p>
+
+<h2 id="haystack-30-points">Haystack — 30 Points</h2>
+
+<p>Open the link and do a search for ‘easyctf’ and the flag would appear.</p>
+
+<p><code>easyctf{bCbzliQHArjSEUQrzAltyILvZ</code></p>
+
+<h2 id="look-at-flag-30-points">Look At Flag — 30 Points</h2>
+
+<p>Download the file and save it as a png.
+View it and you get the flag.</p>
+
+<p><code>easyctf{FLaaaGGGGGg}</code></p>
+
+<h2 id="ezsteg-30-points">EzSteg — 30 Points</h2>
+
+<p>run strings [name of the file] and you will get the flag.</p>
+
+<p><code>easyctf{l00k_at_fil3_sigS}</code></p>
+
+<h2 id="intro-reverse-engineering-30-points">Intro : Reverse Engineering — 30 Points</h2>
+
+<p>I brute forced this challenge</p>
+
+<h2 id="hexedit-50-points">hexedit — 50 Points</h2>
+
+<p>run strings [name of file ] | grep easyctf to get the flag.</p>
+
+<p><code>easyctf{3921e7db}</code></p>
+
+<h2 id="substitute-50-points">Substitute — 50 Points</h2>
+
+<p>run the text through quipquip.com and get the flag.</p>
+
+<p><code>EASYCTF{THIS_IS_AN_EASY_FLAG_TO_GUESS}</code></p>
+
+<h2 id="xor-50-points">XOR — 50 Points</h2>
+
+<p>xor the first 7 chars of the cipher text with easyctf and that will give us a key of <code>&gt;&gt;&gt;&gt;&gt;&gt;&gt;</code>.</p>
+
+<p>Repeat the key to fit the length of the cipher text and get the flag.</p>
+
+<p><code>easyctf{nqcsuwgnlxeklyafpsrexkfjx}</code></p>
+
+<h2 id="in-plain-sight-70-points">In Plain Sight — 70 Points</h2>
+
+<p>The hint for this challenge say dig around. Therefore, the dig command should probably be used.</p>
+
+<p>If you have done this kind of challenges enough, you would know that the flags are normally hidden in TXT files.</p>
+
+<p>Hence, running the command <code>dig -t TXT blockingthesky.com</code> will give you the flag.</p>
+
+<p><code>easyctf{betcha_wish_you_could_have_used_ANY}</code></p>
+
+<h2 id="adder-80-points">Adder — 80 Points</h2>
+
+<p>Through running the file, you should know that the program ask for 3 decimal inputs and adds them together.</p>
+
+<p>This sum is then checked with a static decimal.</p>
+
+<p>Disassemble the binary and you should get something like this in the main function.</p>
+
+<p><img src="/img/EasyCTF_IV/adder.png" alt="Disassembly of function" /></p>
+
+<p>Notice that the program compares the sum of the input with 0x539 which is 1337 in decimal.</p>
+
+<p>Enter any 3 numbers that add up to 1337 and get the flag.</p>
+
+<p><code>easctf{y0u_added_thr33_nums!}</code></p>
+
+<h2 id="my-letter-80-points">My Letter — 80 Points</h2>
+
+<p>This challenge presents us with a Microsoft Word document.</p>
+
+<p>Most of you would have tried the flag <code>easyctf{nevergonnagiveyouup}</code>.</p>
+
+<p>Well, So did I.</p>
+
+<p>However, the solution is to extract the hidden files inside this document.</p>
+
+<p>We can do this by running <code>foremost [name of file]</code>.</p>
+
+<p>That will then present us with an output folder with a zipped file in it.</p>
+
+<p>Unzip the file and there is a picture named ‘template.png’. Open that picture and there is your flag.</p>
+
+<p><code>easyctf{r3j3ct3d_4nd_d3jected}</code></p>
+
+<h2 id="nosource-jr-80-points">Nosource, JR — 80 Points</h2>
+
+<p>Open the page and look at the page source.</p>
+
+<p><img src="/img/EasyCTF_IV/nosourcejr.png" alt="page source of site" /></p>
+
+<p>The process function looks like a xor. It takes in the flag and a key and xor them to form the encrypted flag.</p>
+
+<p>So we can xor the encrypted flag with the key to decrypt it!</p>
+
+<p>Run <code>window.encryptionkey</code> in the console to reveal the key used. The key used is “soupy”.</p>
+
+<p>Now, we pass in the flag and the key into the process function to reveal the flag.</p>
+
+<p>Oh wait, we need to convert the base 64 encoded flag into ascii before passing in through the function.
+Run <code>process(atob(&quot;Fg4GCRoHCQ4TFh0IBxENAE4qEgwHMBsfDiwJRQImHV8GQAwBDEYvV11GCA==&quot;,&quot;soupy&quot;))</code> to reveal the flag.</p>
+
+<p><code>easyctf{congrats!_but_now_f0r_n0s0urc3_...}</code></p>
+
+<h2 id="zippity-80-points">Zippity — 80 Points</h2>
+
+<p>When you netcat into the challenge, you are greeted with this.</p>
+
+<p><img src="/img/EasyCTF_IV/zippity.png" alt="zippity greeting" /></p>
+
+<p>Let’s google for the relevant information.</p>
+
+<p><a href="http://proximityone.com/cen2010_zcta_dp.htm">http://proximityone.com/cen2010_zcta_dp.htm</a> is what we arrived at.</p>
+
+<p>Next, run <code>for(i=0;i&lt;33120;i++){console.log(obj.getCellValue(0,1) + &quot;/&quot; + obj.getCellValue(1,i) + &quot;/&quot; + obj.getCellValue(2,i) + &quot;/&quot; + obj.getCellValue(7,i) + &quot;/&quot; + obj.getCellValue(8,i))}</code> to get the ‘database’.</p>
+
+<p>Next, save the results as a text file.</p>
+
+<p>Now, we need to create a script to parse the information for the challenge and send the relevant information over.</p>
+
+<p>The script my team-mate created can be found at <a href="https://github.com/scriptbaby/CTF-Writeups/tree/master/EasyCTF_IV/Zippity">ScriptBaby</a></p>
+
+<h2 id="diff-100-points">Diff — 100 Points</h2>
+
+<p>For this challenge, we need to compare the hex encoding of the files.</p>
+
+<p>So we need to compare file2,file3 and file4 with file.</p>
+
+<p>Firstly, we encode all the files into hex.</p>
+
+<p>Next, use the diff command on linux to find the differences in the hex. Save this hex to form a hex string.</p>
+
+<p>Convert the hex into ascii to reveal the flag.</p>
+
+<p>HEX string : 656173796374667B64696666696E69746C795F616E5F657A5F70726F626C656D217D</p>
+
+<p><code>easyctf{diffinitly_an_ez_problem!}</code></p>
+
+<h2 id="digging-for-soup-150-points">Digging for soup — 150 Points</h2>
+
+<p>Let’s run a similar command and see what we need to do.</p>
+
+<p>dig -t TXT nicebowlofsoup.com</p>
+
+<p>Hmmm, looks like we need to specify a NameServer. let’s try <code>dig -t TXT nicebowlofsoup.com @153.65.43.62</code>.</p>
+
+<p>Unfortunately no flag here.</p>
+
+<p>Let’s try <code>dig -t AXFR nicebowlofsoup.com @153.65.43.62</code>.</p>
+
+<p><code>easyctf{why_do_i_even_have_this_domain}</code></p>
+
+<p>Read more about AXFR here : <a href="https://en.wikipedia.org/wiki/DNS_zone_transfer">https://en.wikipedia.org/wiki/DNS_zone_transfer</a></p>
+
+      </article>
+      
+    </main>
+    <nav class="end-nav side-padding">
+      
+      <a ontouchstart="cardPressed.call(this)" ontouchend="cardReleased.call(this)" ontouchmove="cardReleased.call(this)" 
+  href="http://localhost:1313/about/" class="card blog-card" rel="bookmark" >
+    
+  <article class="card-body">
+    <h2 class="card-title">About Us</h2>
+    <p class="card-text"> We are a bunch of nerds from Ngee Ann Polytechnic, Singapore currently studying in the field of Information Security
+Members  Alloysius Goh Ashok Balaji Marqus Chan  </p>
+    <div class="card-subtext muted-text">
+      <p>Posted <time datetime="2018-12-22 1222:00">Dec 22, 2018</time></p>
+      <p></p>
+    </div>
+  </article>
+</a>
+      
+      <a ontouchstart="cardPressed.call(this)" ontouchend="cardReleased.call(this)" ontouchmove="cardReleased.call(this)" 
+  href="/" class="card home-card" style="background-image: url( /img/grey-cloud.jpg )" rel="bookmark" >
+  Home
+</a>
+    </nav>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.10.0/dist/katex.min.js" integrity="sha384-K3vbOmF2BtaVai+Qk37uypf7VrgBubhQreNQe9aGsz9lB63dIFiQVlJbr92dw2Lx" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.10.0/dist/contrib/auto-render.min.js" integrity="sha384-kmZOZB5ObwgQnS/DuDg6TScgOiWWBiVt0plIRkZCmE6rDZGrEOQeHM5PcHi+nyqe" crossorigin="anonymous"
+    onload="renderMathInElement(document.body);"></script>
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+<script type="text/javascript" src="/js/core.js"></script>
+<script>
+  hljs.initHighlightingOnLoad();
+</script>
+  </body>
+</html>
