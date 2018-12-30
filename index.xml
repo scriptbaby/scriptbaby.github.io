@@ -6,10 +6,25 @@
     <description>Recent content on writeups</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sun, 30 Dec 2018 21:35:54 +0800</lastBuildDate>
+    <lastBuildDate>Sun, 30 Dec 2018 22:48:44 +0800</lastBuildDate>
     
 	<atom:link href="https://scriptbaby.github.io/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>NeverLan CTF 2018</title>
+      <link>https://scriptbaby.github.io/post/neverlan-ctf-2018/</link>
+      <pubDate>Sun, 30 Dec 2018 22:48:44 +0800</pubDate>
+      
+      <guid>https://scriptbaby.github.io/post/neverlan-ctf-2018/</guid>
+      <description>This is the writeups that my team and I solved for the NeverLan CTF 2018.
+The writeups for the recon challenges will not be published as it is pure digging for information.
+Have fun reading!
+ajax_not_soap — 100 Points First, let’s view the page source.
+We can see that the username is compared to webhooks/get_username.php.
+Upon navigation to that site, we find that the username is MrClean.
+The flag can be found upon navigation to webhooks/get_pass.</description>
+    </item>
     
     <item>
       <title>EasyCTF IV(2018) Writeup</title>

@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en-us" dir="ltr">
+  <head>
+  <meta charset="utf-8" />
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <title>NeverLan CTF 2018 &middot; writeups</title>
+  <meta name="description" content="Writeup by ScriptBaby" />
+  
+  <link rel="icon" type="image/x-icon" href="/img/favicon.ico">
+  
+  <link rel="icon" type="image/png" href="/img/favicon.png">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.0/normalize.min.css" />
+  <link rel="stylesheet" href="/css/style.css" />
+  <link rel="stylesheet" href="/css/xcode.css" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.10.0/dist/katex.min.css" integrity="sha384-9eLZqc9ds8eNjO3TmqPeYcDj8n+Qfa4nuSiGYa6DjLNcv9BtN69ZIulL9+8CqC9Y" crossorigin="anonymous">
+  <link rel="stylesheet" href="/css/latolatinfonts.css" />
+  
+</head>
+  <body class="single-body">
+    <nav class="nav-bar side-padding">
+  <h1 class="nav-header"><a href="/" class="nav-text">
+    ScriptBaby
+  </a></h1>
+  <div class="hamburger-menu">
+		<input type="checkbox" onclick="hamburgerMenuPressed()"/>
+		<span></span>
+		<span></span>
+    <ul class="hamburger-menu-overlay">
+      <li><a href="/" class="hamburger-menu-overlay-link">Home</a></li>
+      
+			<li><a href="https://scriptbaby.github.io/about/" class="hamburger-menu-overlay-link">About Us</a></li>
+			
+      
+    </ul>
+  </div>
+</nav>
+    <main class="content side-text-padding">
+      <article class="post dropcase">
+        <header class="post-header">
+        	<h1 class="post-title">NeverLan CTF 2018</h1>
+          <p class="post-date">Posted <time datetime="2018-12-30">Dec 30, 2018</time></p>
+        </header>
+        
+        <figure class="post-figure">
+          <img src="/img/NeverLanCTF2018/neverlan2018.png">
+        </figure>
+        
+        
+
+<p>This is the writeups that my team and I solved for the NeverLan CTF 2018.</p>
+
+<p>The writeups for the recon challenges will not be published as it is pure digging for information.</p>
+
+<p>Have fun reading!</p>
+
+<h2 id="ajax-not-soap-100-points">ajax_not_soap — 100 Points</h2>
+
+<p>First, let’s view the page source.</p>
+
+<p><img src="/img/NeverLanCTF2018/ajaxnotsoup.png" alt="page source" /></p>
+
+<p>We can see that the username is compared to <code>webhooks/get_username.php</code>.</p>
+
+<p>Upon navigation to that site, we find that the username is <em>MrClean</em>.</p>
+
+<p>The flag can be found upon navigation to <code>webhooks/get_pass.php?username=MrClean</code>.</p>
+
+<p><code>flag{hj38dsjk324nkeasd9}</code></p>
+
+<h2 id="the-red-or-blue-pill-100-points">the_red_or_blue_pill — 100 Points</h2>
+
+<p>When we enter the challenge environment, we can see 2 links : red or blue.</p>
+
+<p>Upon clicking the blue, <code>?blue</code> is appended to the back of the url.
+Since the challenge says we can’t select both, I replaced <code>?blue</code> to <code>?blue&amp;red</code> and the flag appeared.</p>
+
+<p><code>flag{breaking_the_matrix...I_like_it!}</code></p>
+
+<h2 id="ajax-not-borax-200-points">ajax_not_borax — 200 Points</h2>
+
+<p>This challenge is very similar to the other ajax challenge. This just introduces md5 hashing.</p>
+
+<p><img src="/img/NeverLanCTF2018/ajaxnotborax.png" alt="page source" /></p>
+
+<p>Navigate to <code>webhooks/get_username.php?username=</code> again to find the hashed username.</p>
+
+<p>We get the MD5 hash of c5644ca91d1307779ed493c4dedfdcb7. Crack that hash to reveal the username of <strong>tideade</strong>.</p>
+
+<p>Navigate to <code>webhooks/get_pass.php?username=tideade</code> to reveal the flag encoded with base64.</p>
+
+<p>Decode that string to get the flag.</p>
+
+<p><code>flag{sd90J0dnLKJ1ls9HJed}</code></p>
+
+<h2 id="das-blog-200-points">Das_blog — 200 Points</h2>
+
+<p>Upon going to the challenge page, we see a login page.</p>
+
+<p>View the page source to reveal the credentials to login with.</p>
+
+<p>After that, go back to the home screen.</p>
+
+<p><img src="/img/NeverLanCTF2018/dasblog.png" alt="dasblog page" /></p>
+
+<p>My first instinct was to change the cookies.</p>
+
+<p>Using the <em>EditThisCookie</em> plugin, change the permission to admin and refresh the page to reveal the flag.</p>
+
+<p><code>flag{C00ki3s_c4n_b33_ch4ng3d_?}</code></p>
+
+<h2 id="cookie-monster-50-points">cookie_monster — 50 Points</h2>
+
+<p>Change the cookie of Red_Guy’s_name to Elmo and refresh the page to reveal the flag.</p>
+
+<p><code>flag{C00kies_4r3_the_b3st}</code></p>
+
+<h2 id="commitment-issues-50-points">Commitment Issues — 50 Points</h2>
+
+<p>Run <code>strings commitment_issues | grep flag</code> to get the flag.</p>
+
+<p><code>flag{don't_string_me_along_man!}</code></p>
+
+<h2 id="encoding-hashing-100-points">Encoding != Hashing — 100 Points</h2>
+
+<p>Open the file in wireshark and look through the packets with HTTP Protocols.</p>
+
+<p><img src="/img/NeverLanCTF2018/encodingnothash.png" alt="pcap capture" /></p>
+
+<p>Look through the packets and find the flag in the Credentials under Authorization.</p>
+
+<p><code>flag{help-me-obiwan}</code></p>
+
+<h2 id="zip-attack-100-points">Zip Attack — 100 Points</h2>
+
+<p>This challenge requires a tool called pkcrack.
+This tool allows you to decrypt the other files in a zip file as long as you have a copy of an encrypted file and its unencrypted version.</p>
+
+<p>Run <code>./pkcrack -C [path to encrypted zip file] -c supersecretstuff/sw-iphone-first-order.jpg -P [path to unencrypted zip file] -p sw-iphone-first-order.jpg</code> to get the three keys needed to decrypt the rest of the contents.</p>
+
+<p>Run <code>./zipdecrypt &lt;key0&gt; &lt;key1&gt; &lt;key2&gt; [path to encrypted zip] [path to enencrypted zip]</code></p>
+
+<p>Now, unzip the unecrypted zip to reveal flag.txt. Open the text file to reveal the flag.</p>
+
+<p><code>flag{plaintext-attacks-are-cool!}</code></p>
+
+<h2 id="even-more-basic-math-with-some-junk-100-points">even more basic math with some junk — 100 Points</h2>
+
+<p>This challenge requires programming knowledge and we used python to solve this challenge.</p>
+
+<p>We implemented regex to find all the number and add them together.</p>
+
+<p>34659711530484678082 is the answer.</p>
+
+<p>The script can be found at <a href="https://github.com/scriptbaby/CTF-Writeups/tree/master/NeverLanCTF-2018/even%20more%20basic%20math%20with%20some%20junk">github</a></p>
+
+      </article>
+      
+    </main>
+    <nav class="end-nav side-padding">
+      
+      <a ontouchstart="cardPressed.call(this)" ontouchend="cardReleased.call(this)" ontouchmove="cardReleased.call(this)" 
+  href="https://scriptbaby.github.io/post/easyctf-iv2018-writeup/" class="card blog-card" rel="bookmark" >
+    
+    <div class="card-img-container">
+      <p class="card-img-overlay">Next Article</p>
+      <img src="/img/EasyCTF_IV/easyctf4.png" class="card-img">
+    </div>
+    
+  <article class="card-body">
+    <h2 class="card-title">EasyCTF IV(2018) Writeup</h2>
+    <p class="card-text">Writeup by ScriptBaby</p>
+    <div class="card-subtext muted-text">
+      <p>Posted <time datetime="2018-12-30 1230:00">Dec 30, 2018</time></p>
+      <p></p>
+    </div>
+  </article>
+</a>
+      
+      <a ontouchstart="cardPressed.call(this)" ontouchend="cardReleased.call(this)" ontouchmove="cardReleased.call(this)" 
+  href="/" class="card home-card" style="background-image: url( /img/grey-cloud.jpg )" rel="bookmark" >
+  Home
+</a>
+    </nav>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.10.0/dist/katex.min.js" integrity="sha384-K3vbOmF2BtaVai+Qk37uypf7VrgBubhQreNQe9aGsz9lB63dIFiQVlJbr92dw2Lx" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.10.0/dist/contrib/auto-render.min.js" integrity="sha384-kmZOZB5ObwgQnS/DuDg6TScgOiWWBiVt0plIRkZCmE6rDZGrEOQeHM5PcHi+nyqe" crossorigin="anonymous"
+    onload="renderMathInElement(document.body);"></script>
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+<script type="text/javascript" src="/js/core.js"></script>
+<script>
+  hljs.initHighlightingOnLoad();
+</script>
+  </body>
+</html>
