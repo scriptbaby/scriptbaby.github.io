@@ -2,21 +2,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>posts</title>
-    <link>http://localhost:1313/</link>
+    <link>https://scriptbaby.github.io/</link>
     <description>Recent content on posts</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Sun, 30 Dec 2018 21:35:54 +0800</lastBuildDate>
     
-	<atom:link href="http://localhost:1313/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://scriptbaby.github.io/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>EasyCTF IV(2018) Writeup</title>
-      <link>http://localhost:1313/post/easyctf-iv2018-writeup/</link>
+      <link>https://scriptbaby.github.io/post/easyctf-iv2018-writeup/</link>
       <pubDate>Sun, 30 Dec 2018 21:35:54 +0800</pubDate>
       
-      <guid>http://localhost:1313/post/easyctf-iv2018-writeup/</guid>
+      <guid>https://scriptbaby.github.io/post/easyctf-iv2018-writeup/</guid>
       <description>Here are the Writeups for the challenges my team and I solved. The writeups will start from challenges with 30 points and up.
 Haystack — 30 Points Open the link and do a search for ‘easyctf’ and the flag would appear.
 easyctf{bCbzliQHArjSEUQrzAltyILvZ
@@ -27,10 +27,10 @@ EzSteg — 30 Points run strings [name of the file] and you will get the fla
     
     <item>
       <title>About Us</title>
-      <link>http://localhost:1313/about/</link>
+      <link>https://scriptbaby.github.io/about/</link>
       <pubDate>Sat, 22 Dec 2018 00:21:27 +0800</pubDate>
       
-      <guid>http://localhost:1313/about/</guid>
+      <guid>https://scriptbaby.github.io/about/</guid>
       <description> We are a bunch of nerds from Ngee Ann Polytechnic, Singapore currently studying in the field of Information Security
 Members  Alloysius Goh Ashok Balaji Marqus Chan  </description>
     </item>
